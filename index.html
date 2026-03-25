@@ -82,6 +82,7 @@ const models = [
     company: "OpenAI",
     pricing: "Freemium",
     desc: "Chat AI for study, coding, and more",
+    steps: ["Go to website", "Sign up", "Start chatting"],
     link: "https://chat.openai.com"
   },
   {
@@ -89,6 +90,7 @@ const models = [
     company: "Google",
     pricing: "Free",
     desc: "Google AI assistant",
+    steps: ["Open Gemini", "Login", "Ask anything"],
     link: "https://gemini.google.com"
   },
   {
@@ -96,7 +98,24 @@ const models = [
     company: "Anthropic",
     pricing: "Freemium",
     desc: "AI for writing and reasoning",
+    steps: ["Open Claude", "Sign up", "Start using"],
     link: "https://claude.ai"
+  },
+  {
+    name: "Perplexity",
+    company: "Perplexity AI",
+    pricing: "Free",
+    desc: "AI search engine",
+    steps: ["Open site", "Type question", "Get answers"],
+    link: "https://www.perplexity.ai"
+  },
+  {
+    name: "Midjourney",
+    company: "Midjourney",
+    pricing: "Paid",
+    desc: "AI image generator",
+    steps: ["Join Discord", "Type /imagine", "Generate images"],
+    link: "https://www.midjourney.com"
   }
 ];
 
@@ -106,14 +125,21 @@ function display(data) {
 
   data.forEach(m => {
     container.innerHTML += `
-      <div class="card">
-        <h2>${m.name}</h2>
-        <p>${m.company}</p>
-        <p>${m.desc}</p>
-        <span class="badge">${m.pricing}</span>
-        <br><br>
-        <a href="${m.link}" target="_blank">Open Official Site →</a>
-      </div>
+     <div class="card">
+  <h2>${m.name}</h2>
+  <p>${m.company}</p>
+  <p>${m.desc}</p>
+
+  <span class="badge">${m.pricing}</span>
+
+  <p><b>How to use:</b></p>
+  <ul>
+    ${m.steps.map(step => `<li>${step}</li>`).join("")}
+  </ul>
+
+  <br>
+  <a href="${m.link}" target="_blank">Open Official Site →</a>
+</div>
     `;
   });
 }
