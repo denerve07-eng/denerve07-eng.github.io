@@ -60,6 +60,12 @@
 <body>
 
 <h1>🤖 AI Model Tracker</h1>
+<input 
+  type="text" 
+  id="search" 
+  placeholder="Search AI tools..." 
+  onkeyup="searchModels()"
+/>
 
 <div class="buttons">
   <button onclick="filterModels('All')">All</button>
@@ -116,6 +122,14 @@ function filterModels(type) {
   if (type === "All") return display(models);
   display(models.filter(m => m.pricing === type));
 }
+ function searchModels() {
+  const input = document.getElementById("search").value.toLowerCase();
+  const filtered = models.filter(m =>
+    m.name.toLowerCase().includes(input) ||
+    m.company.toLowerCase().includes(input)
+  );
+  display(filtered);
+ }
 
 display(models);
 </script>
